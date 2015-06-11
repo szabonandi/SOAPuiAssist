@@ -57,6 +57,7 @@ public class os_command_run extends HttpServlet
 
             out.println("\n--Command reqested--\n");
             out.println(command);
+            
 
             out.println("\n--Standard output--\n");
 
