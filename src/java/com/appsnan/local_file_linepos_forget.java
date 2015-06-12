@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
+import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author szabon
  */
-public class local_file_display extends HttpServlet
+public class local_file_linepos_forget extends HttpServlet
   {
 
     /**
@@ -35,7 +35,7 @@ public class local_file_display extends HttpServlet
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
       {
-        response.setContentType("text/plain;charset=UTF-8");
+        response.setContentType("text/text;charset=UTF-8");
 
         String filename = "";
 
@@ -44,30 +44,30 @@ public class local_file_display extends HttpServlet
             filename = request.getParameter("file");
           }
 
-        try (PrintWriter out = response.getWriter())
+        PrintWriter out = response.getWriter();
+
+        try
           {
-            BufferedReader bufferedReader;
-
-            try
-              {
-                FileReader fr = new FileReader(filename);
-                bufferedReader = new BufferedReader(fr);
-              } catch (FileNotFoundException e)
-              {
-                out.println("ERROR: file not found: " + filename);
-                return;
-              }
-            
-            out.println("filename: " + filename + " contains:\n");
-
-            String line;
-
-            while ((line = bufferedReader.readLine()) != null)
-              {
-                out.println(line);
-              }
-
+            FileReader fr = new FileReader(filename);
+          } catch (FileNotFoundException e)
+          {
+            out.println("ERROR: file not found: " + filename);
+            return;
           }
+
+        HashMap<String, Integer> fileLinePosMap = (HashMap<String, Integer>) request.getServletContext().getAttribute("fileLinePosMap");
+
+        if (fileLinePosMap == null)
+          {
+            fileLinePosMap = new HashMap<>();
+          }
+
+        fileLinePosMap.put(filename, 0);
+        request.getServletContext().setAttribute("fileLinePosMap", fileLinePosMap);
+
+        out.println("LinePos set to 0 in file: " + filename);
+        return;
+
       }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -9,10 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>SOAPui Assist WebService</title>
+        <title>SOAPui Assist WebService Welcome Page</title>
     </head>
     <body>
-        <h1>SOAPui Assist WebService</h1>
+        <h1>SOAPui Assist WebService Welcome Page</h1>
         <table border="1" cellpadding="5" bgcolor="#b0ffb0">
             <tr>
                 <td>
@@ -37,11 +37,29 @@
             </tr>
             <tr>
                 <td>
-                    <a href="os_command_run?command=dir">
+                    <a href="local_file_display_new_lines?file=c:\proba.txt" >
+                        Local textfile utolso lekeres ota keletkezett uj sorainak lekerese
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="local_file_linepos_forget?file=c:\proba.txt" >
+                        Local textfile utolso lekeres sorpozicio torlese
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="os_command_run?command=java">
                         Command futtatas
                     </a>
                 </td>
             </tr>            
-        </table> 
+        </table>
+        <br>
+        <a href="SOAPuiAssist_generated_by_soapui.wadl">
+            Click SaveAs here to get the WADL descriptor, which can be imported into SOAPui!
+        </a>
     </body>
 </html>

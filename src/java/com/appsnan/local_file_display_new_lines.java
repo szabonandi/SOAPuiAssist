@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
+import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author szabon
  */
-public class local_file_display extends HttpServlet
+public class local_file_display_new_lines extends HttpServlet
   {
 
     /**
@@ -35,7 +35,7 @@ public class local_file_display extends HttpServlet
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
       {
-        response.setContentType("text/plain;charset=UTF-8");
+        response.setContentType("text/text;charset=UTF-8");
 
         String filename = "";
 
@@ -44,29 +44,64 @@ public class local_file_display extends HttpServlet
             filename = request.getParameter("file");
           }
 
-        try (PrintWriter out = response.getWriter())
-          {
-            BufferedReader bufferedReader;
+        PrintWriter out = response.getWriter();
 
-            try
+        Integer lastLinePos = 0;
+
+        HashMap<String, Integer> fileLinePosMap = (HashMap<String, Integer>) request.getServletContext().getAttribute("fileLinePosMap");
+
+        if (fileLinePosMap == null)
+          {
+            lastLinePos = 0;
+            fileLinePosMap = new HashMap<>();
+          }
+        else
+          {
+            if (fileLinePosMap.containsKey(filename))
               {
-                FileReader fr = new FileReader(filename);
-                bufferedReader = new BufferedReader(fr);
-              } catch (FileNotFoundException e)
+                lastLinePos = fileLinePosMap.get(filename);
+              }
+          }
+
+        BufferedReader bufferedReader;
+
+        try
+          {
+            FileReader fr = new FileReader(filename);
+            bufferedReader = new BufferedReader(fr);
+          } catch (FileNotFoundException e)
+          {
+            out.println("ERROR: file not found: " + filename);
+            return;
+          }
+
+        String line = "";
+        Integer actualLinePos = 0;
+
+        while (actualLinePos < lastLinePos)
+          {
+            line = bufferedReader.readLine();
+            if (line == null)
               {
-                out.println("ERROR: file not found: " + filename);
+                out.println("No new lines in: " + filename);
                 return;
               }
-            
-            out.println("filename: " + filename + " contains:\n");
+            actualLinePos++;
+          }
 
-            String line;
+        out.println("New lines in: " + filename + "\n");
 
-            while ((line = bufferedReader.readLine()) != null)
+        while (true)
+          {
+            out.println(line);
+            actualLinePos++;
+            line = bufferedReader.readLine();
+            if (line == null)
               {
-                out.println(line);
+                fileLinePosMap.put(filename, actualLinePos);
+                request.getServletContext().setAttribute("fileLinePosMap", fileLinePosMap);
+                return;
               }
-
           }
       }
 

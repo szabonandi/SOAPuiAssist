@@ -16,6 +16,14 @@
         <servlet-name>os_command_run</servlet-name>
         <servlet-class>com.appsnan.os_command_run</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>local_file_display_new_lines</servlet-name>
+        <servlet-class>com.appsnan.local_file_display_new_lines</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>local_file_linepos_forget</servlet-name>
+        <servlet-class>com.appsnan.local_file_linepos_forget</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>local_file_display</servlet-name>
         <url-pattern>/local_file_display</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>os_command_run</servlet-name>
         <url-pattern>/os_command_run</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>local_file_display_new_lines</servlet-name>
+        <url-pattern>/local_file_display_new_lines</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>local_file_linepos_forget</servlet-name>
+        <url-pattern>/local_file_linepos_forget</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -6,6 +6,7 @@
 package com.appsnan;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -66,15 +67,25 @@ public class local_file_display_from_line_to_line extends HttpServlet
 
         try (PrintWriter out = response.getWriter())
           {
+            BufferedReader bufferedReader;
+
+            try
+              {
+                FileReader fr = new FileReader(filename);
+                bufferedReader = new BufferedReader(fr);
+              } catch (FileNotFoundException e)
+              {
+                out.println("ERROR: file not found: " + filename);
+                return;
+              }
+
             if (fromline > toline)
               {
                 out.println("ERROR: fromline: " + fromline + " > toline: " + toline + "\n");
                 return;
               }
-            out.println("filename: " + filename + " from line: " + fromline + " to line: " + toline + " contains:\n");
 
-            FileReader fr = new FileReader(filename);
-            BufferedReader bufferedReader = new BufferedReader(fr);
+            out.println("filename: " + filename + " from line: " + fromline + " to line: " + toline + " contains:\n");
 
             String line;
             int actualLine = 0;

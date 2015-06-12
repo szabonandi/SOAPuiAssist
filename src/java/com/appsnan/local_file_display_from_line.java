@@ -6,6 +6,7 @@
 package com.appsnan;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -55,11 +56,19 @@ public class local_file_display_from_line extends HttpServlet
 
         try (PrintWriter out = response.getWriter())
           {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("filename: " + filename + " from line: " + fromline + " contains:\n");
+            BufferedReader bufferedReader;
 
-            FileReader fr = new FileReader(filename);
-            BufferedReader bufferedReader = new BufferedReader(fr);
+            try
+              {
+                FileReader fr = new FileReader(filename);
+                bufferedReader = new BufferedReader(fr);
+              } catch (FileNotFoundException e)
+              {
+                out.println("ERROR: file not found: " + filename);
+                return;
+              }
+            
+            out.println("filename: " + filename + " from line: " + fromline + " contains:\n");
 
             String line;
             int actualLine = 0;

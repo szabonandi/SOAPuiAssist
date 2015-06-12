@@ -1,0 +1,74 @@
+<application xmlns="http://wadl.dev.java.net/2009/02">
+   <doc xml:lang="en" title="http://localhost:8080"/>
+   <resources base="http://localhost:8080">
+      <resource path="SOAPuiAssist/local_file_display" id="Local_file_display">
+         <doc xml:lang="en" title="Local_file_display"/>
+         <param name="file" default="c:\proba.txt" type="xs:string" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+         <method name="GET" id="Local_file_display">
+            <doc xml:lang="en" title="Local_file_display"/>
+            <request/>
+            <response status="200">
+               <representation mediaType="text/plain;charset=UTF-8" element="data"/>
+            </response>
+         </method>
+      </resource>
+      <resource path="SOAPuiAssist/local_file_display_from_line" id="local_file_display_from_line">
+         <doc xml:lang="en" title="local_file_display_from_line"/>
+         <param name="file" default="c:\proba.txt" type="xs:string" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+         <param name="fromline" default="5" type="xs:string" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+         <method name="GET" id="Method 1">
+            <doc xml:lang="en" title="Method 1"/>
+            <request/>
+            <response status="200">
+               <representation mediaType="text/plain;charset=UTF-8" element="data"/>
+            </response>
+         </method>
+      </resource>
+      <resource path="SOAPuiAssist/local_file_display_from_line_to_line" id="local_file_display_from_line_to_line">
+         <doc xml:lang="en" title="local_file_display_from_line_to_line"/>
+         <param name="file" default="c:\proba.txt" type="xs:string" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+         <param name="fromline" default="5" type="xs:string" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+         <param name="toline" default="10" type="xs:string" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+         <method name="GET" id="Method 1">
+            <doc xml:lang="en" title="Method 1"/>
+            <request/>
+            <response status="200">
+               <representation mediaType="text/plain;charset=UTF-8" element="data"/>
+            </response>
+         </method>
+      </resource>
+      <resource path="SOAPuiAssist/os_command_run" id="os_command_run">
+         <doc xml:lang="en" title="os_command_run"/>
+         <param name="command" default="java" type="xs:string" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+         <method name="GET" id="Method 1">
+            <doc xml:lang="en" title="Method 1"/>
+            <request/>
+            <response status="200">
+               <representation mediaType="text/plain;charset=UTF-8" element="data"/>
+            </response>
+         </method>
+      </resource>
+      <resource path="SOAPuiAssist/local_file_display_new_lines" id="local_file_display_new_lines">
+         <doc xml:lang="en" title="local_file_display_new_lines"/>
+         <param name="file" default="c:\proba.txt" type="xs:string" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+         <method name="GET" id="Method 1">
+            <doc xml:lang="en" title="Method 1"/>
+            <request/>
+            <response status="200">
+               <representation mediaType="text/text;charset=UTF-8" element="data"/>
+            </response>
+         </method>
+      </resource>
+      <resource path="SOAPuiAssist/local_file_linepos_forget" id="local_file_linepos_forget">
+         <doc xml:lang="en" title="local_file_linepos_forget"/>
+         <param name="file" default="c:\proba.txt" type="xs:string" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+         <method name="GET" id="Method 1">
+            <doc xml:lang="en" title="Method 1"/>
+            <request/>
+            <response status="200">
+               <representation mediaType="text/text;charset=UTF-8" element="data"/>
+            </response>
+         </method>
+      </resource>
+   </resources>
+</application>
