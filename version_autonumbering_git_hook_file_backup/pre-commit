@@ -11,14 +11,13 @@ echo "last version number from file: version.txt:"
 cat version.txt
 echo ""
 
-version_number=`cat version.txt | head -n 1`
+version_number=`cat version.txt`
 ((version_number=version_number+1))
 
 echo "new version=$version_number"
 echo ""
 
-echo "$version_number\n" > version.txt
-date +"%Y.%M.%d %H:%M">>version.txt
+echo "$version_number" > version.txt
 
 git add version.txt
 
