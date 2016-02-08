@@ -7,6 +7,9 @@
 #
 # To enable this hook, rename this file to "pre-commit".
 
+#
+# automatikus verzionoveles commit eseten, by nandi
+#
 echo "last version number from file: version.txt:"
 cat version.txt
 echo ""
@@ -21,6 +24,9 @@ echo "$version_number" > version.txt
 
 git add version.txt
 
+#
+# verzionoveles vege
+#
 
 
 
