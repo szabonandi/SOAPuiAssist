@@ -10,6 +10,7 @@
 #
 # automatikus verzionoveles commit eseten, by nandi
 #
+#
 echo "last version number from file: version.txt:"
 cat version.txt
 echo ""
