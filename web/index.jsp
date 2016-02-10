@@ -62,6 +62,6 @@
             Click SaveAs here to get the WADL descriptor, which can be imported into SOAPui!
         </a>
         <br>
-        <p>version: </p>
+        <p>version number: </p>
     </body>
 </html>
