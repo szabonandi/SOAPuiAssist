@@ -61,5 +61,7 @@
         <a href="SOAPuiAssist_generated_by_soapui.wadl">
             Click SaveAs here to get the WADL descriptor, which can be imported into SOAPui!
         </a>
+        <br>
+        <p>version: </p>
     </body>
 </html>
