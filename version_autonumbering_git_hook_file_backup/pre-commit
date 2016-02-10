@@ -10,20 +10,19 @@
 #
 # automatikus verzionoveles commit eseten, by nandi
 #
-#
-echo "last version number from file: version.txt:"
-cat version.txt
+echo "last version number from file: web/version.txt:"
+cat web/version.txt
 echo ""
 
-version_number=`cat version.txt`
+version_number=`cat web/version.txt`
 ((version_number=version_number+1))
 
 echo "new version=$version_number"
 echo ""
 
-echo "$version_number" > version.txt
+echo "$version_number" > web/version.txt
 
-git add version.txt
+git add web/version.txt
 
 #
 # verzionoveles vege
