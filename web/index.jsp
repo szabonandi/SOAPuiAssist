@@ -62,6 +62,8 @@
             Click SaveAs here to get the WADL descriptor, which can be imported into SOAPui!
         </a>
         <br>
-        <p>version number: </p>
+        <p>version number:
+            <jsp:include page="version.txt"/>
+        </p>
     </body>
 </html>
