@@ -51,7 +51,7 @@
             </tr>
             <tr>
                 <td>
-                    <a href="os_command_run?command=java">
+                    <a href="os_command_run?command=java -version">
                         Command futtatas
                     </a>
                 </td>
