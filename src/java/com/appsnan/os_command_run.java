@@ -47,7 +47,7 @@ public class os_command_run extends HttpServlet {
         //nem lehet siman meghivni a Runtime.exec(command) -ot
         //mert az a szokozt tartalmazo opciokat az exec mogott allo StringTokenizer a szokoznel szettori
         //nem veszi figyelembe a dupla idezojelet es a escape-el szokozt sem
-        //ezert sajat tokenizer kellett hasznalni regexp-el
+        //ezert sajat tokenizer kellett hasznalni regexp-el megoldva
         //innen van: http://stackoverflow.com/questions/3366281/tokenizing-a-string-but-ignoring-delimiters-within-quotes
 
         //ez a regex kifejezes keresi a tokeneket
